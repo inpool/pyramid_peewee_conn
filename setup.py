@@ -14,7 +14,7 @@ requires = [
 ]
 
 
-setup(name='Starter',
+setup(name='pyramid_peewee_conn',
       version='0.5',
       description='A package which provides integration between the Pyramid web application server and the peewee ORM. ',
       long_description=README + '\n\n' + CHANGES,
