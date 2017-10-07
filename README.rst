@@ -8,7 +8,7 @@ A package which provides integration between the Pyramid web application server 
 the peewee ORM.
 
 It's tested under CPython 3.4 but maybe run under any environ which pyramid and peewee can be used.
-If you found any issue in using it, please [submit it](https://github.com/inpool/pyramid_peewee_conn/issues).
+If you found any issue in using it, please `submit it<https://github.com/inpool/pyramid_peewee_conn/issues>`_.
 
 Installation
 ------------
@@ -55,7 +55,7 @@ setting to your of your Pyramid's ``.ini`` file configuration (or to the
    ...
 
 The ``peewee.url`` parameter is a URL defined in the peewee documentation
-[Connecting using a Database URL](https://peewee.readthedocs.org/en/latest/peewee/database.html#connecting-using-a-database-url)
+`Connecting using a Database URL<https://peewee.readthedocs.org/en/latest/peewee/database.html#connecting-using-a-database-url>`_
 
 Once you've both included the ``pyramid_peewee_conn`` into your configuration
 via ``config.include('pyramid_zodbconn')`` and you've added a
