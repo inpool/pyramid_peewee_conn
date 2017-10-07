@@ -5,8 +5,13 @@ from setuptools import setup, find_packages
 here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'README.rst')) as f:
     README = f.read()
-with open(os.path.join(here, 'CHANGES.txt')) as f:
-    CHANGES = f.read()
+
+CHANGES = ''
+try:
+    with open(os.path.join(here, 'CHANGES.txt')) as f:
+        CHANGES = f.read()
+except:
+    pass
 
 requires = [
     'pyramid',
@@ -15,7 +20,7 @@ requires = [
 
 
 setup(name='pyramid_peewee_conn',
-      version='0.5',
+      version='0.5.2',
       description='A package which provides integration between the Pyramid web application server and the peewee ORM. ',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[

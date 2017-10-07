@@ -25,7 +25,6 @@ mechanism to include it into your Pyramid project's configuration.  In your
 Pyramid project's ``__init__.py``:
 
 .. code-block:: python
-   :linenos:
 
    config = Configurator(.....)
    config.include('pyramid_peewee_conn')
@@ -34,7 +33,6 @@ Alternately you can use the ``pyramid.includes`` configuration value in your
 ``.ini`` file:
 
 .. code-block:: ini
-   :linenos:
 
    [app:myapp]
    pyramid.includes = pyramid_peewee_conn
@@ -42,7 +40,7 @@ Alternately you can use the ``pyramid.includes`` configuration value in your
 Using
 -----
 
-For :mod:`pyramid_peewee_conn` to work properly, you must add at least one
+For ``pyramid_peewee_conn`` to work properly, you must add at least one
 setting to your of your Pyramid's ``.ini`` file configuration (or to the
 ``settings`` dictionary if you're not using ini configuration):
 ``peewee.urls``.  For example:
@@ -60,11 +58,10 @@ The ``peewee.url`` parameter is a URL defined in the peewee documentation
 Once you've both included the ``pyramid_peewee_conn`` into your configuration
 via ``config.include('pyramid_zodbconn')`` and you've added a
 ``peewee.url`` setting to your configuration, you can then use the
-:func:`pyramid_peewee_conn.get_db` API in your Pyramid application, most
+``pyramid_peewee_conn.get_db()`` API in your Pyramid application, most
 commonly in a model defintion:
 
 .. code-block:: python
-   :linenos:
 
     from peewee import *
     from pyramid_peewee_conn import get_db
@@ -86,7 +83,7 @@ commonly in a model defintion:
     db.connect()
     db.create_tables([Person, Pet])
 
-The :func:`pyramid_peewee_conn.get_db` API returns a peewee.Database instance which 
+The ``pyramid_peewee_conn.get_db()`` API returns a peewee.Database instance which 
 you've specified via ``peewee.url`` in your configuration.
 
 Named Databases
@@ -105,7 +102,7 @@ example:
    peewee.url.memory = sqlite:///:memory:
    ...
 
-Once this is done, you can use :func:`pyramid_peewee_conn.get_db` to
+Once this is done, you can use ``pyramid_peewee_conn.get_db()`` to
 obtain a reference to each of the named databases:
 
 .. code-block:: python

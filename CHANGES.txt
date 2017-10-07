@@ -1,3 +1,13 @@
+0.5.2
+------
+
+-  Fix. Report a CHANGES.txt can't be found error.
+
+0.5.1
+------
+
+-  Fix. README.rst has some format error.
+
 0.1
 ---
 
