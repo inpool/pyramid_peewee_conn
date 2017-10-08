@@ -1,34 +1,34 @@
+from os.path import abspath, dirname, join as pathjoin
+from configparser import ConfigParser, ExtendedInterpolation
+
 from pyramid.config import Configurator
 from peewee import SqliteDatabase, PostgresqlDatabase, MySQLDatabase
+from pytest import raises
 
-from pyramid_peewee_conn import get_db
+from pyramid_peewee_conn import get_db, _data
+
+CFG_FILE = abspath(pathjoin(dirname(dirname(__file__)), 'pytest.ini'))
+CONFIG = ConfigParser(interpolation=ExtendedInterpolation())
+CONFIG.read(CFG_FILE)
 
 
-def load_config(style='new'):
-    settings = {'new': {'peewee.url': 'sqlite:///:memory:',
-                        'peewee.url.test': 'postgres://user:password@hostname/pgdbname', },
-                'old': {'peewee.urls': (
-                    'sqlite:///test.db',
-                    'mysql://user:password@hostname/mysqldb',
-                    'mysql://user:password@hostname/test'
-                )},
-                'combined': {}, }
-    settings['combined'].update(settings['new'])
-    settings['combined'].update(settings['old'])
+def setup_function():
+    for data in _data.values():
+        data.clear()
 
-    config = Configurator(settings=settings[style])
+
+def load_config(style):
+    style_name = 'case_' + style
+    config = Configurator(settings=CONFIG[style_name])
     config.include('pyramid_peewee_conn')
 
 
+def test_get_db_before_included():
+    with raises(SystemExit):
+        get_db()
+
+
 def test_get_db_combined_style():
-    '''
-    peewee.url = sqlite:///:memory:
-    peewee.url.test = postgres://user:password@hostname/pgdbname
-    peewee.urls =
-        sqlite:///test.db
-        mysql://user:password@hostname/mysqldb
-        mysql://user:password@hostname/test
-    '''
     load_config('combined')
     db_default = get_db()
     db_test = get_db('test')
@@ -71,7 +71,6 @@ def test_get_db_old_style():
         mysql://user:password@hostname/mysqldb
         mysql://user:password@hostname/test
     '''
-
     load_config('old')
     db_default = get_db()
     db_test_db = get_db('test.db')

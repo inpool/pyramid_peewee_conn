@@ -1,6 +1,18 @@
 Change Log
 =============
 
+0.7.0
+------
+
+- Add API ``get_proxy()`` and it's documentation
+- Add API ``init_proxies()`` and it's documentation
+- Add unit test for the new APIs
+
+0.6.3
+------
+
+Fix a bug with old_style database urls.
+
 0.6.2
 ------
 
