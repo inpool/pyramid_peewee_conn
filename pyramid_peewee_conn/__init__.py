@@ -5,32 +5,37 @@ from playhouse import db_url
 
 
 _log = logging.getLogger(__name__)
-__urls = {}
-__proxies = {}
+_urls = {}
+_dbs = {}
 
 
 def includeme(config):
+    _urls.clear()
+    _dbs.clear()
     prefix = 'peewee.url.'
     settings = config.registry.settings
     # Compatible with the pyramid_peewee
     old_version_urls = settings.get('peewee.urls', [])
-    main_url = settings.get('peewee.url', None)
-    if main_url:
-        __urls[None] = main_url
     for url in old_version_urls:
         db_info = db_url.parse(url)
         db_name = db_info['database']
-        __urls[db_name] = url
-    for k, v in settings.items():
+        _urls[db_name] = url
+    old_main_url = old_version_urls[0] if old_version_urls else ''
+
+    main_url = settings.get('peewee.url', '') or old_main_url
+    if main_url:
+        _urls[None] = main_url
+
+    for k, url in settings.items():
         if k.lower().startswith(prefix):
             db_name = k[len(prefix):]
-            __urls[db_name] = v
+            _urls[db_name] = url
 
 
 def get_db(name=None):
     try:
-        url = __urls[name]
+        url = _urls[name]
     except KeyError:
-        _log.error('Database %s has not configured!' % name)
+        _log.error('Database %s has not configured!', name)
         sys.exit(1)
-    return __proxies.setdefault(name, db_url.connect(url))
+    return _dbs.setdefault(name, db_url.connect(url))

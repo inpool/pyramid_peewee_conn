@@ -17,6 +17,20 @@ Install using setuptools, e.g. (within a virtual environment)::
 
   $ easy_install pyramid_peewee_conn
 
+Or using pip::
+
+    $ pip install pyramid_peewee_conn
+
+Or install from github::
+
+    $ git clone https://github.com/inpool/pyramid_peewee_conn
+    $ cd pyramid_peewee_conn
+    $ python setup.py install
+
+Or if your computer hasn't git command, you can install it via from github::
+
+    $ pip install https://github.com/inpool/pyramid_peewee_conn/archive/master.zip
+
 Setup
 -----
 
