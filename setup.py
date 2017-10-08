@@ -17,7 +17,7 @@ REQUIRES = [
 DESCRIPTION = ('A package which provides integration between the Pyramid web application '
                'server and the peewee ORM.')
 setup(name='pyramid_peewee_conn',
-      version='0.6.1',
+      version='0.6.2',
       description=DESCRIPTION,
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
