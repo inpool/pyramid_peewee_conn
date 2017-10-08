@@ -1,3 +1,8 @@
+0.6.0
+------
+
+- Add unit test.
+
 0.5.2
 ------
 
@@ -8,7 +13,7 @@
 
 -  Fix. README.rst has some format error.
 
-0.1
+0.1.0
 ---
 
 -  Initial version
