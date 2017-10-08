@@ -1,7 +1,21 @@
+Change Log
+=============
+
+0.6.1
+------
+
+Complete unit test.
+    
+- Unit test each API separate into 3 cases.
+- Add multiple installation methods in README.rst
+- Fix bug when include more than once(Offen in unit test).
+
+
 0.6.0
 ------
 
 - Add unit test.
+- Fix
 
 0.5.2
 ------
