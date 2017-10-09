@@ -1,6 +1,11 @@
 Change Log
 =============
 
+0.7.1
+------
+
+Just change the description.
+
 0.7.0
 ------
 

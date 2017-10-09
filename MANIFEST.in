@@ -1,1 +1,2 @@
 include *.txt *.ini *.cfg *.rst
+recursive-include pyramid_peewee_conn *.ini
